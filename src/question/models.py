@@ -2,7 +2,7 @@ from database import Base
 from sqlalchemy import Column, Integer, String, DateTime
 from datetime import datetime
 
-class Question(Base):
+class QuestionDB(Base):
     __tablename__ = "questions"
     
     id = Column(Integer, primary_key=True, index=True)
