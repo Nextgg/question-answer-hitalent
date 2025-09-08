@@ -28,3 +28,10 @@ async def add_question(data: Question, session: SessionDep):
     except Exception as e:
         await session.rollback()
         raise HTTPException(status_code=500, detail=f"Error creating question: {str(e)}")
+    
+@question_router.get("/questions/{id}", status_code=status.HTTP_200_OK)
+async def get_questions(session: SessionDep):
+    query = select(QuestionDB)
+    result = await session.execute(query)
+    questions = result.scalars().all()
+    return questions
