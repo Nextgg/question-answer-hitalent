@@ -3,18 +3,16 @@ from datetime import datetime
 from answer.schemas import AnswerResponse
 from typing import List
 
-class Question(BaseModel):
+class QuestionBase(BaseModel):
     text: str
 
+class QuestionCreate(QuestionBase):
+    pass
 
-class QuestionResponse(BaseModel):
+class QuestionResponse(QuestionBase):
     id: int
-    text: str
     created_at: datetime
-
-class QuestionResponse(BaseModel):
-    id: int
-    text: str
-    created_at: datetime
-    answers: List[AnswerResponse] = [] 
+    answers: List[AnswerResponse] = []
     
+    class Config:
+        from_attributes = True  # Для совместимости с SQLAlchemy моделями

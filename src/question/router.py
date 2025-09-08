@@ -1,5 +1,5 @@
 from fastapi import APIRouter, status, HTTPException
-from question.schemas import Question,QuestionResponse
+from question.schemas import QuestionBase,QuestionResponse,QuestionCreate
 from question.models import QuestionDB
 from sqlalchemy import select
 from utils.dependencies import SessionDep
@@ -15,7 +15,7 @@ async def get_questions(session: SessionDep):
     return questions
 
 @question_router.post("/questions", response_model=QuestionResponse, status_code=status.HTTP_201_CREATED)
-async def add_question(data: Question, session: SessionDep):
+async def add_question(data: QuestionCreate, session: SessionDep):
     try:
         new_question = QuestionDB(
             text= data.text,

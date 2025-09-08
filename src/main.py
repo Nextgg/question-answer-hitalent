@@ -2,11 +2,14 @@ import uvicorn
 from fastapi import FastAPI
 from database import engine, Base
 from question.models import QuestionDB
-from answer.models import Answer
+from answer.models import AnswerDB
 from question.router import question_router
+from answer.router import answer_router
 
 app = FastAPI()
+
 app.include_router(question_router)
+app.include_router(answer_router)
 
 @app.post ('/setup_database')
 async def setup_database():
