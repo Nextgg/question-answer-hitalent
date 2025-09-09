@@ -1,3 +1,4 @@
+import os
 from logging.config import fileConfig
 
 from sqlalchemy import engine_from_config
@@ -16,8 +17,9 @@ config = context.config
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
+DATABASE_URL = os.environ.get('DATABASE_URL')
 
-config.set_main_option("sqlalchemy.url","postgresql+asyncpg://postgres:12qwaszx@localhost:5432/hitalent?async_fallback=True")
+config.set_main_option("sqlalchemy.url",DATABASE_URL+"?async_fallback=True")
 # add your model's MetaData object here
 # for 'autogenerate' support
 # from myapp import mymodel
