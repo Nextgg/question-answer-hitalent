@@ -1,3 +1,4 @@
+#Схемы pydantic
 from pydantic import BaseModel
 from datetime import datetime
 from answer.schemas import AnswerResponse
@@ -14,5 +15,3 @@ class QuestionResponse(QuestionBase):
     created_at: datetime
     answers: List[AnswerResponse] = []
     
-    class Config:
-        from_attributes = True  # Для совместимости с SQLAlchemy моделями

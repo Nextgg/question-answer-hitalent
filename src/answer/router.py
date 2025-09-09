@@ -1,3 +1,4 @@
+#Ручки для ответов
 from fastapi import APIRouter, status, HTTPException
 from question.schemas import QuestionBase,QuestionResponse
 from question.models import QuestionDB

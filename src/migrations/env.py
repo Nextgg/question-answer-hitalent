@@ -1,13 +1,14 @@
-import os
 from logging.config import fileConfig
 
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
-
+import os
 from alembic import context
-
 from question.models import QuestionDB
+from answer.models import AnswerDB
 from database import Base
+
+
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
@@ -17,7 +18,9 @@ config = context.config
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
-DATABASE_URL = os.environ.get('DATABASE_URL')
+
+DATABASE_URL = os.environ.get("DATABASE_URL","postgresql+asyncpg://postgres:password@db:5432/hitalent")
+# DATABASE_URL = "postgresql+asyncpg://postgres:12qwaszx@localhost:5432/hitalent"
 
 config.set_main_option("sqlalchemy.url",DATABASE_URL+"?async_fallback=True")
 # add your model's MetaData object here

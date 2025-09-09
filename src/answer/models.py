@@ -1,3 +1,4 @@
+#Модель базы данных
 from database import Base
 from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
 from datetime import datetime
