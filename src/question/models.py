@@ -1,5 +1,5 @@
 #Модели базы даенных
-from databaseutils import Base
+from database import Base
 from sqlalchemy import Column, Integer, String, DateTime
 from datetime import datetime
 from sqlalchemy.orm import relationship

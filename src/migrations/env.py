@@ -6,7 +6,7 @@ import os
 from alembic import context
 from question.models import QuestionDB
 from answer.models import AnswerDB
-from databaseutils import Base
+from database import Base
 
 
 # this is the Alembic Config object, which provides
@@ -19,8 +19,8 @@ if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
 
-# DATABASE_URL = os.environ.get("DATABASE_URL","postgresql+asyncpg://postgres:password@db:5432/hitalent")
-DATABASE_URL = "postgresql+asyncpg://postgres:12qwaszx@localhost:5432/hitalent"
+DATABASE_URL = os.environ.get("DATABASE_URL","postgresql+asyncpg://postgres:password@db:5432/hitalent")
+
 
 config.set_main_option("sqlalchemy.url",DATABASE_URL+"?async_fallback=True")
 # add your model's MetaData object here
