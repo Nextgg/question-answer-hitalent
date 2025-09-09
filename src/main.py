@@ -1,7 +1,7 @@
 import uvicorn
 from fastapi import FastAPI
 import os
-from database import engine, Base
+from databaseutils import Base, engine
 from question.models import QuestionDB
 from answer.models import AnswerDB
 from question.router import question_router
@@ -13,6 +13,9 @@ app = FastAPI()
 app.include_router(question_router)
 app.include_router(answer_router)
 
+@app.get("/")
+async def read_main():
+    return {"msg": "Hello World"}
 
 # @app.post ('/setup_database')
 # async def setup_database():
