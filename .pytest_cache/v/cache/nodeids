@@ -1,4 +1,0 @@
-[
-  "src/tests/test_api.py::test_read_main",
-  "src/tests/test_api.py::test_read_root"
-]
